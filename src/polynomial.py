@@ -1,5 +1,4 @@
 class Polynomial(object):
-
     def __init__(self, coefficients, variable):
         self.coefficients = coefficients
         self.variable = variable
@@ -13,7 +12,7 @@ class Polynomial(object):
         :return:
         """
         result = []
-        for i in range(len(self.coefficients)-1, -1, -1):
+        for i in range(len(self.coefficients) - 1, -1, -1):
             if self.coefficients[i]:
                 if i < len(self.coefficients) - 1:
                     if self.coefficients[i] >= 0:
@@ -56,3 +55,28 @@ class Polynomial(object):
         for i in range(len(self.coefficients)):
             result += self.coefficients[i] * pow(self.variable, i)
         return result
+
+    def __add__(self, other):
+        """
+        Adding two polynomials.
+        :return: New polynomial that represents sum of polynomials.
+        """
+        if len(self.coefficients) > len(other.coefficients):
+            new_coefficients = [i for i in self.coefficients]
+            for i in range(len(other.coefficients)):
+                new_coefficients[i] += other.coefficients[i]
+        else:
+            new_coefficients = [i for i in other.coefficients]
+            for i in range(len(self.coefficients)):
+                new_coefficients[i] += self.coefficients[i]
+
+        return Polynomial(new_coefficients, None)
+
+    def __mul__(self, scalar):
+        new_coefficients = self.coefficients
+        for i in range(len(self.coefficients)):
+            new_coefficients[i] *= scalar
+        return Polynomial(new_coefficients, None)
+
+    def __sub__(self, other):
+        return self + other * (-1)

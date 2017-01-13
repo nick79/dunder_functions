@@ -27,3 +27,24 @@ class TestPolynomial(TestCase):
         self.assertEqual(975, abs(self.p1))
         self.assertEqual(1, abs(self.p2))
         self.assertEqual(75001, abs(self.p3))
+
+    def test_adding(self):
+        p4 = self.p1 + self.p2
+        self.assertEqual('x^4 + 2x^3 + 3x^2 + 4x + 6', str(p4))
+
+        p5 = self.p1 + self.p3
+        self.assertEqual('9x^4 - 3x^3 + 3x^2 + 4x + 6', str(p5))
+
+    def test_multiple_with_scalar(self):
+        p4 = self.p1 * 2
+        self.assertEqual('2x^4 + 4x^3 + 6x^2 + 8x + 10', str(p4))
+
+        p5 = self.p2 * 2
+        self.assertEqual('2', str(p5))
+
+    def test_subtracting(self):
+        p4 = self.p1 - self.p2
+        self.assertEqual('x^4 + 2x^3 + 3x^2 + 4x + 4', str(p4))
+
+        p5 = self.p1 - self.p3
+        self.assertEqual('-7x^4 + 7x^3 + 3x^2 + 4x + 4', str(p5))
