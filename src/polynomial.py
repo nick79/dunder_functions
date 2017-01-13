@@ -45,3 +45,14 @@ class Polynomial(object):
                 return '-x^%d' % power
             return '%sx^%d' % (coefficient, power)
         return "%s" % coefficient
+
+    def __abs__(self):
+        """
+        Evaluate value of polynomial for a given value of variable.
+        """
+        result = 0
+        if self.variable is None:
+            return self.coefficients[0]
+        for i in range(len(self.coefficients)):
+            result += self.coefficients[i] * pow(self.variable, i)
+        return result
