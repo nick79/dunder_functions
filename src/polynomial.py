@@ -45,6 +45,9 @@ class Polynomial(object):
             return '%sx^%d' % (coefficient, power)
         return "%s" % coefficient
 
+    def __len__(self):
+        return len(self.coefficients) - 1
+
     def __abs__(self):
         """
         Evaluate value of polynomial for a given value of variable.

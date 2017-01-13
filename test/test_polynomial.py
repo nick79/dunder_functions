@@ -23,6 +23,10 @@ class TestPolynomial(TestCase):
         self.assertEqual('1', str(self.p2))
         self.assertEqual('8x^4 - 5x^3 + 1', str(self.p3))
 
+    def test_degree_of_polynomial(self):
+        self.assertEqual(4, len(self.p1))
+        self.assertEqual(0, len(self.p2))
+
     def test_value_of_polynomial(self):
         self.assertEqual(975, abs(self.p1))
         self.assertEqual(1, abs(self.p2))
