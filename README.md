@@ -1,4 +1,4 @@
-# dunder_functions
+# Python dunder functions
 
 Python special methods.
 
